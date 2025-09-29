@@ -5,7 +5,7 @@
 ***HOW TO USE***  
 *1: On the "Code" section of the github page click on the green CODE button*   <img width="110" height="126" alt="image" src="https://github.com/user-attachments/assets/fbc1ff2d-c3ea-428d-b0c5-a8398b30e480" />
   
-*2: Download as a ZIP*  <img width="376" height="294" alt="image" src="https://github.com/user-attachments/assets/62154619-9455-4411-a36f-0fb6b700d13e" />
+*2: Download as a ZIP*  <img width="150" height="118" alt="image" src="https://github.com/user-attachments/assets/62154619-9455-4411-a36f-0fb6b700d13e" />
 
   
 *3: Extract the ZIP by right clicking the file on file manager*  
