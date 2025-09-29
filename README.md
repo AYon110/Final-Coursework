@@ -9,8 +9,8 @@
 
 *3: Extract the ZIP by right clicking the file on file manager*   <img width="213" height="186" alt="image" src="https://github.com/user-attachments/assets/6cb3f161-7553-4e2e-b157-03b89304dc38" />
 
-*4: Locate the main.py file in the folder*  
-  
+*4: Locate the main.py file in the folder*  <img width="257" height="130" alt="image" src="https://github.com/user-attachments/assets/89ca8244-3b76-41a1-8d1b-6bb5a86980ef" />
+
 *5: Simply double click it to use the program*  
 
 
