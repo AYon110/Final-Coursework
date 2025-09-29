@@ -1,6 +1,6 @@
 **CS COURSEWORK**
-
 // REVISION GAME TO HELP COMP SCI ALEVEL/GCSE STUDENTS //
+
 
 ***HOW TO USE***  
 *1: On the "Code" section of the github page click on the green CODE button*   <img width="110" height="126" alt="image" src="https://github.com/user-attachments/assets/fbc1ff2d-c3ea-428d-b0c5-a8398b30e480" />
@@ -11,7 +11,7 @@
 
 *4: Locate the main.py file in the folder*  <img width="257" height="130" alt="image" src="https://github.com/user-attachments/assets/89ca8244-3b76-41a1-8d1b-6bb5a86980ef" />
 
-*5: Simply double click it to use the program*  
+*5: Simply double click the main.py file to use the program*  
 
 
 
