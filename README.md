@@ -7,9 +7,8 @@
   
 *2: Download as a ZIP*  <img width="150" height="118" alt="image" src="https://github.com/user-attachments/assets/62154619-9455-4411-a36f-0fb6b700d13e" />
 
-  
-*3: Extract the ZIP by right clicking the file on file manager*  
-  
+*3: Extract the ZIP by right clicking the file on file manager*   <img width="213" height="186" alt="image" src="https://github.com/user-attachments/assets/6cb3f161-7553-4e2e-b157-03b89304dc38" />
+
 *4: Locate the main.py file in the folder*  
   
 *5: Simply double click it to use the program*  
