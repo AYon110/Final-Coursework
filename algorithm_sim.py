@@ -336,7 +336,7 @@ class AlgorithmScreen(Screen):
                 cmp_val = s["cmp"]
                 msg = "Comparing target with mid: "
                 if cmp_val == 0:
-                    msg += "EQUAL ✅"
+                    msg += "EQUAL"
                 elif cmp_val < 0:
                     msg += "TARGET < MID → search left"
                 else:

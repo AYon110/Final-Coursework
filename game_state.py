@@ -7,3 +7,4 @@ class GameState(Enum):
     LOGIC_GATE = 2
     ALGORITHM = 3
     NUMBER_CONVERTER = 4
+    OPTIONS = 5
