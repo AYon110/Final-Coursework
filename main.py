@@ -1,5 +1,6 @@
 import pygame
 import pygame.freetype
+
 from game_state import GameState
 import sys
 from ui_element import UIelement
@@ -20,7 +21,7 @@ class MainMenu(Screen):
         super().__init__(screen_surface)
         self.elements = [
             UIelement((400, 300), "Get Started", 30, WHITE, BLUE, action=GameState.GAME_SELECT),
-            UIelement((400, 400), "Options", 25, WHITE, BLUE),
+            UIelement((400, 400), "Options", 25, WHITE, BLUE, action=GameState.OPTIONS),
             UIelement((400, 450), "Quit", 25, WHITE, BLUE, action=GameState.QUIT)
         ]
 
@@ -37,6 +38,18 @@ class GameSelect(Screen):
             UIelement((400, 550), "Back", 25, WHITE, BLUE, action=GameState.MAIN_MENU)
         ]
 
+
+#----------------------
+# Options screen
+#------------------------
+
+class OptionsScreen(Screen):
+    def __init__(self, screen_surface):
+        super().__init__(screen_surface)
+        self.back_button = UIelement((100,550), "Back", 25, WHITE, BLUE, action=GameState.MAIN_MENU)
+        self.elements = [self.back_button]
+
+
 # -----------------------------
 # Main Application
 # -----------------------------
@@ -50,7 +63,8 @@ def main():
         GameState.GAME_SELECT: GameSelect(screen),
         GameState.LOGIC_GATE: LogicGateScreen(screen),
         GameState.ALGORITHM: AlgorithmScreen(screen),
-        GameState.NUMBER_CONVERTER: ConverterScreen(screen)
+        GameState.NUMBER_CONVERTER: ConverterScreen(screen),
+        GameState.OPTIONS: OptionsScreen(screen)
     }
 
     current_state = GameState.MAIN_MENU
