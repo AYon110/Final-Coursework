@@ -74,9 +74,9 @@ def generate_question():
     return question_text, correct_answer
 
 
-# --------------------------
+
 # Input Box
-# --------------------------
+
 class InputBox:
     def __init__(self, x, y, w, h, placeholder=""):
         self.rect = pygame.Rect(x, y, w, h)
@@ -117,9 +117,9 @@ class InputBox:
 
 
 
-# --------------------------
+
 # Converter Screen
-# --------------------------
+
 class ConverterScreen(Screen):
     def __init__(self, screen_surface):
         super().__init__(screen_surface)

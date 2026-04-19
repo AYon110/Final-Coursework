@@ -7,7 +7,7 @@ from ui_element import UIelement
 from screen_base import Screen
 from game_state import GameState
 
-# --- Colors ---
+# Colors
 WHITE = (255, 255, 255)
 BLUE = (59, 126, 209)
 BLACK = (0, 0, 0)
@@ -29,9 +29,9 @@ START_X = 60
 ROW_Y = 320
 
 
-# -----------------------
+
 # Step Generators
-# -----------------------
+
 def generate_binary_search_steps(arr, target):
     steps = []
     low, high = 0, len(arr) - 1
@@ -73,9 +73,8 @@ def generate_bubble_sort_steps(arr):
     return steps
 
 
-# -----------------------
 # Screen
-# -----------------------
+
 class AlgorithmScreen(Screen):
     def __init__(self, screen_surface):
         super().__init__(screen_surface)
@@ -83,14 +82,14 @@ class AlgorithmScreen(Screen):
         # Navigation
         self.back_button = UIelement((100, 550), "Back", 25, WHITE, BLUE, action=GameState.GAME_SELECT)
 
-        # Row 1 (top toolbar): mode + generate
+
         self.mode_bin_btn = UIelement((160, 90), "Binary Search", 22, WHITE, BLUE, action="MODE_BIN")
         self.mode_bub_btn = UIelement((360, 90), "Bubble Sort", 22, WHITE, BLUE, action="MODE_BUBBLE")
         self.generate_btn = UIelement((650, 90), "Generate", 22, WHITE, BLUE, action="GEN")
 
         # Row 2 (BIN only): target picker (no overlaps)
-        self.target_left  = UIelement((460, 140), "◀", 22, WHITE, BLUE, action="TGT_LEFT")
-        self.target_right = UIelement((740, 140), "▶", 22, WHITE, BLUE, action="TGT_RIGHT")
+        self.target_left  = UIelement((525, 140), "<", 22, WHITE, BLUE, action="TGT_LEFT")
+        self.target_right = UIelement((740, 140), ">", 22, WHITE, BLUE, action="TGT_RIGHT")
         # Clickable "Target: <val>" pill in the middle:
         self.target_rect = pygame.Rect(560, 126, 160, 28)  # draw + detect manually
 
@@ -114,7 +113,7 @@ class AlgorithmScreen(Screen):
         self.error_msg = ""
         self.regen_on_next_entry = False  # when you come back to this screen, make a fresh list
 
-    # ------------- helpers -------------
+    #  helpers
     def _random_list(self, n=10, low=1, high=99):
         return random.sample(range(low, high + 1), n)
 
@@ -185,7 +184,7 @@ class AlgorithmScreen(Screen):
                 self.arr = self._random_list()
                 self.source_arr = self.arr[:]
 
-    # ------------- event loop -------------
+    # event loop
     def handle_events(self, events):
         mouse_pos = pygame.mouse.get_pos()
         mouse_up = any(e.type == pygame.MOUSEBUTTONUP and e.button == 1 for e in events)
@@ -249,7 +248,7 @@ class AlgorithmScreen(Screen):
 
         return None
 
-    # ------------- drawing -------------
+    # drawing
     def _draw_header(self):
         # Title + mode
         FONT.render_to(self.screen, (20, 20), "Algorithm Visualiser", WHITE)
@@ -262,7 +261,7 @@ class AlgorithmScreen(Screen):
 
         # Row 2: BIN-only target picker (no overlap)
         if self.mode == "BIN":
-            FONT_SM.render_to(self.screen, (20, 140), "Pick target (click pill or use ◀ ▶):", WHITE)
+            FONT_SM.render_to(self.screen, (20, 140), "Pick target (click pill or use < >):", WHITE)
             self.target_left.draw(self.screen)
 
             # Target pill (clickable)
@@ -349,7 +348,7 @@ class AlgorithmScreen(Screen):
                     highlight={"i": s.get("i"), "j": s.get("j"), "swapped": s.get("swapped", False)}
                 )
                 if s.get("done"):
-                    FONT_SM.render_to(self.screen, (50, 290), "Sorted ✅", GREEN)
+                    FONT_SM.render_to(self.screen, (50, 290), "Sorted", GREEN)
                 else:
                     msg = "Comparing indices i, j"
                     if s.get("swapped"):

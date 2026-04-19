@@ -5,7 +5,7 @@ from screen_base import Screen
 from game_state import GameState
 from ui_element import UIelement
 
-# ---------- Colors ----------
+# Colors
 WHITE = (255, 255, 255)
 BLUE = (59, 126, 209)
 BLACK = (0, 0, 0)
@@ -21,7 +21,7 @@ SELECT_C = (255, 170, 50)
 pygame.freetype.init()
 FONT = pygame.freetype.SysFont("Courier", 18, bold=True)
 
-# ---------- Layout ----------
+# Layout
 WIDTH, HEIGHT = 800, 600
 PALETTE_W = 180
 GRID_SIZE = 50
@@ -52,7 +52,7 @@ def point_segment_distance(p, a, b):
     return ((px - cx)**2 + (py - cy)**2) ** 0.5
 
 
-# ---------- Base Component ----------
+# Base Component
 class Component:
     def __init__(self, x, y, w=100, h=60, label="COMP", num_inputs=0, num_outputs=1):
         self.rect = pygame.Rect(x, y, w, h)
@@ -91,7 +91,7 @@ class Component:
         )
 
 
-# ---------- Specific Components ----------
+#  Specific Components
 class Switch(Component):
     def __init__(self, x, y):
         super().__init__(x, y, label="SWITCH", num_inputs=0, num_outputs=1)
@@ -164,7 +164,7 @@ class Bulb(Component):
             pygame.draw.circle(screen, RED, p, PIN_RADIUS)
 
 
-# ---------- Wire ----------
+# Wire
 class Wire:
     def __init__(self, from_comp, from_pin_index, to_comp, to_pin_index):
         self.from_comp = from_comp
@@ -189,7 +189,7 @@ class Wire:
         pygame.draw.line(screen, color, sp, tp, width)
 
 
-# ---------- Screen ----------
+# Screen
 class LogicGateScreen(Screen):
     def __init__(self, screen_surface):
         super().__init__(screen_surface)
@@ -219,8 +219,8 @@ class LogicGateScreen(Screen):
         self.dragging = None
         self.drag_offset = (0, 0)
 
-    # -------- helpers --------
-    # -------- graph helpers --------
+    #  helpers
+    #  graph helpers
     def _build_graph(self):
         """
         Build adjacency and indegree maps based on current wires.
@@ -333,7 +333,7 @@ class LogicGateScreen(Screen):
         self.selected_comp = None
         self.selected_wire = None
 
-    # -------- events --------
+    # events
     def handle_events(self, events):
         mouse_pos = pygame.mouse.get_pos()
         mouse_up = False
@@ -357,7 +357,7 @@ class LogicGateScreen(Screen):
                     self.selected_comp = None
                 continue
 
-            # --- Mouse down: start wire OR select/drag ---
+            # Mouse down: start wire OR select/drag
             if e.type == pygame.MOUSEBUTTONDOWN and e.button == 1:
                 # Start wire if output pin is under cursor
                 out_hit = self.nearest_output_pin(e.pos, max_dist=PIN_HIT_R)
@@ -408,7 +408,7 @@ class LogicGateScreen(Screen):
                 if e.button == 1:
                     mouse_up = True
 
-                    # Palette clicks: arm placement
+                    # palette clicks: arm placement
                     for label, rect in self.palette:
                         if rect.collidepoint(e.pos):
                             if label == "TRASH":
@@ -419,13 +419,13 @@ class LogicGateScreen(Screen):
                                 self.pending_from = None
                             return None
 
-                    # Place armed component
+                    # place armed component
                     if self.armed_type and CANVAS_RECT.collidepoint(e.pos):
                         self.place_component(self.armed_type, e.pos)
                         self.armed_type = None
                         return None
 
-                    # Finish drag -> snap; or delete if dropped on trash
+                    # finish drag -> snap; or delete if dropped on trash
                     if self.dragging:
                         if self.trash_rect.collidepoint(e.pos):
                             if self.dragging is self.bulb:
@@ -479,8 +479,8 @@ class LogicGateScreen(Screen):
 
         return None
 
-    # -------- simulation --------
-    # -------- simulation (topological) --------
+
+    #  simulation (topological)
     def simulate(self):
         """
         Evaluate the circuit from sources to sinks using a topo-like pass.
@@ -530,7 +530,7 @@ class LogicGateScreen(Screen):
                             c.inputs[i] = 1 if getattr(src, "output", 0) else 0
             c.compute()
 
-    # -------- drawing --------
+    # drawing
     def draw_palette(self):
         pygame.draw.rect(self.screen, PALETTE_BG, pygame.Rect(0, 0, PALETTE_W, HEIGHT))
         FONT.render_to(self.screen, (20, 20), "Palette", WHITE)

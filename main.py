@@ -8,26 +8,27 @@ from screen_base import Screen
 from logic_gates import LogicGateScreen
 from algorithm_sim import AlgorithmScreen
 from number_converter import ConverterScreen
+from Tutorial import TutorialScreen
 
 WHITE = (255,255,255)
 BLUE = (59, 126, 209)
 
 
-# -----------------------------
+
 # Main Menu Screen
-# -----------------------------
+
 class MainMenu(Screen):
     def __init__(self, screen_surface):
         super().__init__(screen_surface)
         self.elements = [
             UIelement((400, 300), "Get Started", 30, WHITE, BLUE, action=GameState.GAME_SELECT),
-            UIelement((400, 400), "Options", 25, WHITE, BLUE, action=GameState.OPTIONS),
+            UIelement((400, 400), "Tutorial", 25, WHITE, BLUE, action=GameState.TUTORIAL),
             UIelement((400, 450), "Quit", 25, WHITE, BLUE, action=GameState.QUIT)
         ]
 
-# -----------------------------
+
 # Game Selection Screen
-# -----------------------------
+
 class GameSelect(Screen):
     def __init__(self, screen_surface):
         super().__init__(screen_surface)
@@ -39,20 +40,10 @@ class GameSelect(Screen):
         ]
 
 
-#----------------------
-# Options screen
-#------------------------
-
-class OptionsScreen(Screen):
-    def __init__(self, screen_surface):
-        super().__init__(screen_surface)
-        self.back_button = UIelement((100,550), "Back", 25, WHITE, BLUE, action=GameState.MAIN_MENU)
-        self.elements = [self.back_button]
 
 
-# -----------------------------
 # Main Application
-# -----------------------------
+
 def main():
     pygame.init()
     screen = pygame.display.set_mode((800, 600))
@@ -64,7 +55,7 @@ def main():
         GameState.LOGIC_GATE: LogicGateScreen(screen),
         GameState.ALGORITHM: AlgorithmScreen(screen),
         GameState.NUMBER_CONVERTER: ConverterScreen(screen),
-        GameState.OPTIONS: OptionsScreen(screen)
+        GameState.TUTORIAL: TutorialScreen(screen)
     }
 
     current_state = GameState.MAIN_MENU
